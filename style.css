@@ -1,0 +1,153 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ffb6c1, #f78fb3, #f3a683);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+    direction: rtl;
+}
+
+/* كارد */
+.card {
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(15px);
+    padding: 30px;
+    border-radius: 25px;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+    color: white;
+    position: relative;
+    z-index: 2;
+}
+
+.photo {
+    width: 65%;
+    border-radius: 20px;
+    margin-bottom: 15px;
+}
+
+h1 {
+    font-size: 22px;
+    min-height: 50px;
+}
+
+.subtitle {
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    margin: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.yes-btn {
+    background: linear-gradient(45deg, #ff6fa5, #ff3d81);
+    color: white;
+}
+
+.no-btn {
+    background: #ccc;
+}
+
+.hidden-message {
+    margin-top: 15px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: 0.5s;
+}
+
+.hidden-message.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.yes-message {
+    margin-top: 15px;
+    font-size: 18px;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.yes-message.show {
+    opacity: 1;
+    text-shadow: 0 0 10px pink;
+}
+
+/* انفجار قلوب */
+.burst-heart {
+    position: absolute;
+    font-size: 20px;
+    animation: burst 1s ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes burst {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: translateY(-50px) scale(1.5); opacity: 0; }
+}
+
+/* مود الحب */
+body.love-mode {
+    background: linear-gradient(135deg, #ff758c, #ff7eb3, #ffd3e0);
+    transition: 1.5s ease;
+}
+
+body.love-mode .card {
+    box-shadow: 0 0 30px rgba(255, 105, 180, 0.7);
+    transition: 1s ease;
+}
+
+/* الرسالة السرية */
+.secret-message {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 15px 25px;
+    border-radius: 20px;
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    z-index: 999;
+}
+
+/* خلفية قلوب */
+.hearts::before,
+.hearts::after {
+    content: "💖 💕 💗 💞 💓";
+    position: absolute;
+    font-size: 22px;
+    animation: float 12s linear infinite;
+    white-space: nowrap;
+}
+
+.hearts::after {
+    top: 50%;
+    animation-delay: 6s;
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh); opacity: 0; }
+    30% { opacity: 1; }
+    100% { transform: translateY(-100vh); opacity: 0; }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .card { padding: 20px; }
+    h1 { font-size: 18px; }
+    .photo { width: 80%; }
+}

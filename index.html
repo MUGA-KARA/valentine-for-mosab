@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Valentine 💖</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="hearts"></div>
+
+    <div class="card">
+        <img src="Mosab.jpeg" alt="His Photo" class="photo">
+
+        <!-- اسم يتكتب حرف حرف -->
+        <h1 id="typedName"></h1>
+
+        <p class="subtitle">إلى كتكوتي المفضل 💕</p>
+
+        <button onclick="toggleMessage()">افتح الرسالة 💌</button>
+
+        <div id="loveMessage" class="hidden-message">
+            أحبك و أحب كل تفاصيلك اللطيفة 💖
+        </div>
+
+        <div class="love-question">
+            <p> ? Do you love me </p>
+            <button class="yes-btn" onclick="sayYes()">Yes 💘</button>
+            <button class="no-btn" onmouseover="moveNo()">No 😭</button>
+        </div>
+
+        <div id="yesMessage" class="yes-message">
+            Love you toooooo 💞✨
+        </div>
+    </div>
+
+<script>
+/* كتابة الاسم */
+const nameText = "Happy Valentine's Day My Mosab 💕";
+let i = 0;
+function typeEffect() {
+    if (i < nameText.length) {
+        document.getElementById("typedName").innerHTML += nameText.charAt(i);
+        i++;
+        setTimeout(typeEffect, 70);
+    }
+}
+typeEffect();
+
+/* فتح الرسالة */
+function toggleMessage() {
+    const message = document.getElementById("loveMessage");
+    message.classList.toggle("show");
+}
+
+/* زر No يهرب */
+function moveNo() {
+    const noBtn = document.querySelector(".no-btn");
+    const x = Math.random() * 200 - 100;
+    const y = Math.random() * 200 - 100;
+    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+}
+
+/* زر Yes */
+function sayYes() {
+    const msg = document.getElementById("yesMessage");
+    msg.classList.add("show");
+
+    document.body.classList.add("love-mode");
+
+    // انفجار قلوب
+    for (let i = 0; i < 25; i++) {
+        const heart = document.createElement("div");
+        heart.className = "burst-heart";
+        heart.innerHTML = "💖";
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.top = Math.random() * window.innerHeight + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 1200);
+    }
+
+    // رسالة سرية بعد 15 ثانية
+    setTimeout(() => {
+        showSecretMessage();
+    }, 15000);
+}
+
+/* كتابة الرسالة السرية حرف حرف */
+function showSecretMessage() {
+    const secret = document.createElement("div");
+    secret.className = "secret-message";
+    document.body.appendChild(secret);
+
+    const text = "mommy’s good boy is the best 😏";
+    let j = 0;
+
+    function typeSecret() {
+        if (j < text.length) {
+            secret.innerHTML += text.charAt(j);
+            j++;
+            setTimeout(typeSecret, 70);
+        }
+    }
+
+    typeSecret();
+}
+</script>
+
+</body>
+</html>
